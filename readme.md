@@ -2,7 +2,7 @@
 
 GitHub Actions 实现 [GLaDOS][glados] 自动签到
 
-([GLaDOS][glados] 可用邀请码: `[ZTIMU-AU8P5-O9VGU-AJ7CB](https://glados.space/landing/ZTIMU-AU8P5-O9VGU-AJ7CB )`, 双方都有奖励天数)
+([GLaDOS][glados] 可用邀请码: [ZTIMU-AU8P5-O9VGU-AJ7CB](https://glados.space/landing/ZTIMU-AU8P5-O9VGU-AJ7CB), 双方都有奖励天数)
 
 ## 使用说明
 
