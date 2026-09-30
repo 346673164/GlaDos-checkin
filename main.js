@@ -3,25 +3,32 @@ const glados = async () => {
   if (!cookie) return
   try {
     const headers = {
+      'accept': 'application/json, text/plain, */*',
+      'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
+      'cache-control': 'no-cache',
+      'content-type': 'application/json;charset=UTF-8',
       'cookie': cookie,
-      'referer': 'https://glados.cloud/console/checkin',
-      'user-agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)',
+      'origin': 'https://glados.rocks',
+      'pragma': 'no-cache',
+      'priority': 'u=1, i',
+      'sec-ch-ua': '"Google Chrome";v="153", "Not_A Brand";v="8", "Chromium";v="153"',
+      'sec-ch-ua-mobile': '?0',
+      'sec-ch-ua-platform': '"macOS"',
+      'sec-fetch-dest': 'empty',
+      'sec-fetch-mode': 'cors',
+      'sec-fetch-site': 'same-origin',
+      'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36'
     }
-    const checkin = await fetch('https://glados.cloud/api/user/checkin', {
+    const checkin = await fetch('https://glados.rocks/api/user/checkin', {
       method: 'POST',
-      headers: { ...headers, 'content-type': 'application/json' },
-      body: '{"token":"glados.cloud"}',
-    }).then((r) => r.json())
-    const status = await fetch('https://glados.cloud/api/user/status', {
-      method: 'GET',
       headers,
+      body: JSON.stringify({ token: 'glados.rocks' }),
     }).then((r) => r.json())
     
     const res = [
       'Checkin OK',
       `${checkin.message}`,
-      `Left Days ${Number(status.data.leftDays)}`,
-      `${checkin.message}`.replace('Checkin!', `Days ${Number(status.data.leftDays)}!`)
+      `Status: ${JSON.stringify(checkin)}`,
     ]
     console.log(res)
     return res
@@ -57,7 +64,7 @@ const notify_ft = async (contents) => {
   
   const baseUrl = `https://sctapi.ftqq.com/${token}.send`;
   const params = {
-    text: contents[3],
+    text: contents[0],
     desp: contents.join('\n\n')
   };
   console.log(params)
